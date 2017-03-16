@@ -13,6 +13,8 @@ import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Onibus;
  */
 public interface OnibusDAO {
     
+    public Onibus obterOnibusPeloID(String id);
+    
     public void adicionarOnibus(Onibus onibus);
     
     public void removerOnibus(Onibus onibus);
