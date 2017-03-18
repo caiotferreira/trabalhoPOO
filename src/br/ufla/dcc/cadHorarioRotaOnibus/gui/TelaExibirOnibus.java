@@ -24,11 +24,13 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
         modelOnibus = new OnibusTableModel();
         gerenciadorOnibus = new GerenciadorOnibus();
         
-        for(Onibus o : gerenciadorOnibus.buscarOnibus()){
+        initComponents();
+    }
+    
+    public void preencherTabela() {
+        for(Onibus o : gerenciadorOnibus.buscarOnibus()) {
             modelOnibus.adicionarOnibus(o);
         }
-        
-        initComponents();
     }
 
     /**

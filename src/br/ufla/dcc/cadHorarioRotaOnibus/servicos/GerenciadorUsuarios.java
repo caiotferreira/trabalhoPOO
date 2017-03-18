@@ -39,12 +39,9 @@ public class GerenciadorUsuarios {
      * ou seja, usuário não existe ou senha incorreta.
      */
     public void autenticarUsuario(Usuario usuario) throws Exception {
-        System.out.println("3");
         Usuario usuarioCadastrado = 
                 repositorioUsuario.obterUsuarioPeloLogin(usuario.obterLogin());
-        System.out.println("4");
         sessaoUsuario.alterarUsuario(usuarioCadastrado, usuario.obterSenha());
-        System.out.println("8");
     }
 
     /**

@@ -86,12 +86,9 @@ public class TelaPrincipal {
         // Serve para o caso em que o usuário
         // decidiu mudar o idioma da aplicação.
         if (janela != null) {
-            System.out.println("10");
             janela.dispose();
         }
-        System.out.println("11");
         construirTela();
-        System.out.println("12");
         configurarEventosTela();
         exibirTela();
     }
@@ -179,6 +176,7 @@ public class TelaPrincipal {
         menuListarOnibus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                telaExibirOnibus.preencherTabela();
                 telaExibirOnibus.setVisible(true);
             }
         });
@@ -196,6 +194,7 @@ public class TelaPrincipal {
         menuListarTrajetos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                telaExibirTrajeto.preencherTabela();
                 telaExibirTrajeto.setVisible(true);
             }
         });
@@ -246,6 +245,7 @@ public class TelaPrincipal {
         menuCadastrarTrajeto = new JMenuItem("Cadastrar Trajeto");
         menuCadastrarRota = new JMenuItem("Cadastrar Rota");
         menuListarOnibus = new JMenuItem("Exibir ônibus");
+        menuListarTrajetos = new JMenuItem("Exibir trajetos");
         menuNavegar.add(menuCadastrarOnibus);
         menuNavegar.add(menuCadastrarTrajeto);
         menuNavegar.add(menuCadastrarRota);
@@ -285,15 +285,16 @@ public class TelaPrincipal {
     private void construirMenuUsuario() {
         menuPrincipal = new JMenuBar();
         construirMenuInicio();
-        
+
         if (sessaoUsuario.estahLogado()) {
+            
              // Aqui você poderá adicionar outros menus adequados
              // ao seu projeto que serão exibidos quando o
              // usuário estiver logado no sistema.
-             construirMenuNavegar();
-             configurarEventosOnline();
+            construirMenuNavegar();
+            configurarEventosOnline();
          }  
-        
+
         construirMenuIdioma();
         construirMenuAjuda();
         janela.setJMenuBar(menuPrincipal);
