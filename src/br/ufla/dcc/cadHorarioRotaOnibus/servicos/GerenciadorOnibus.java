@@ -8,6 +8,7 @@ package br.ufla.dcc.cadHorarioRotaOnibus.servicos;
 import br.ufla.dcc.cadHorarioRotaOnibus.dao.OnibusDAO;
 import br.ufla.dcc.cadHorarioRotaOnibus.dao.lista.OnibusDAOLista;
 import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Onibus;
+import java.util.List;
 
 /**
  *
@@ -38,5 +39,9 @@ public class GerenciadorOnibus {
             //throw new Exception(I18N.obterErroUsuarioJaCadastrado());
         }
         repositorioOnibus.adicionarOnibus(onibus);
+    }
+    
+    public List<Onibus> buscarOnibus() {
+        return repositorioOnibus.obterTodosOnibus();
     }
 }

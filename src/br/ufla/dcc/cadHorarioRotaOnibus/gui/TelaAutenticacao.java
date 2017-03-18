@@ -134,6 +134,7 @@ public class TelaAutenticacao {
      * @return Usuário criado.
      */
     private Usuario carregarUsuario() {
+        System.out.println("2");
         return new Usuario(txtLogin.getText(), txtSenha.getPassword());
     }
     
@@ -145,8 +146,11 @@ public class TelaAutenticacao {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    System.out.println("1");
                     gerenciadorUsuarios.autenticarUsuario(carregarUsuario());
+                    System.out.println("9");
                     telaPrincipal.inicializar();
+                    System.out.println("10");
                     janela.dispose();
                 } catch (Exception ex) {
                     Utilidades.msgErro(ex.getMessage());

@@ -7,8 +7,8 @@ package br.ufla.dcc.cadHorarioRotaOnibus.gui;
 
 import br.ufla.dcc.cadHorarioRotaOnibus.i18n.I18N;
 import br.ufla.dcc.cadHorarioRotaOnibus.imagens.GerenciadorDeImagens;
-import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Onibus;
-import br.ufla.dcc.cadHorarioRotaOnibus.servicos.GerenciadorOnibus;
+import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Trajeto;
+import br.ufla.dcc.cadHorarioRotaOnibus.servicos.GerenciadorTrajetos;
 import br.ufla.dcc.cadHorarioRotaOnibus.util.Utilidades;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
@@ -24,45 +24,36 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * Classe que representa a interface que cadastra ônibus
- * 
+ *
  * @author Acer
  */
-public class TelaCadastroOnibus {
+public class TelaCadastroTrajeto {
     // referência para a tela principal
     private final TelaPrincipal telaPrincipal;
-    // referência para o gerenciador de usuários
-    private final GerenciadorOnibus gerenciadorOnibus;
+    // referência para o gerenciador de trajetos
+    private final GerenciadorTrajetos gerenciadorTrajetos;
     
-    // componentes da tela
-    private JDialog janela;
-    private GridBagLayout layout;
-    private GridBagConstraints gbc;
-    private JLabel lbID;
-    private JLabel lbMarca;
-    private JLabel lbModelo;
-    private JLabel lbAno;
-    private JLabel lbKm;
-    private JLabel lbCapacidade;
-    private JTextField txtID;
-    private JTextField txtMarca;
-    private JTextField txtModelo;
-    private JTextField txtAno;
-    private JTextField txtKm;
-    private JTextField txtCapacidade;
-    private JButton btnSalvar;
-    private JButton btnCancelar;
-   
     /**
      * Constrói a tela de Cadastro de Ônibus guardando a referência da tela 
      * principal e criando o gerenciador de ônibus.
      * 
      * @param telaPrincipal Referência da tela principal.
      */
-    public TelaCadastroOnibus(TelaPrincipal telaPrincipal) {
-        this.gerenciadorOnibus = new GerenciadorOnibus();
+    public TelaCadastroTrajeto(TelaPrincipal telaPrincipal) {
+        this.gerenciadorTrajetos = new GerenciadorTrajetos();
         this.telaPrincipal = telaPrincipal;
     }
+    
+    // componentes da tela
+    private JDialog janela;
+    private GridBagLayout layout;
+    private GridBagConstraints gbc;
+    private JLabel lbID;
+    private JLabel lbDescricao;
+    private JTextField txtID;
+    private JTextField txtDescricao;
+    private JButton btnSalvar;
+    private JButton btnCancelar;
     
     /**
      * Inicializa a tela, construindo seus componentes, configurando os eventos
@@ -91,82 +82,34 @@ public class TelaCadastroOnibus {
         janela.add(c);
     }
     
-    private void adicionarComponentes () {
-        lbID = new JLabel("Registro de série");
+    private void adicionarComponentes() {
+        lbID = new JLabel("ID");
         adicionarComponente(lbID,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 0, 0, 1, 1);
         
-        lbMarca = new JLabel("Marca");
-        adicionarComponente(lbMarca,
+        lbDescricao = new JLabel("Descricao");
+        adicionarComponente(lbDescricao,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 1, 0, 1, 1);
-        
-        lbModelo = new JLabel("Modelo");
-        adicionarComponente(lbModelo,
-                GridBagConstraints.LINE_END,
-                GridBagConstraints.NONE,
-                2, 0, 1, 1);
-        
-        lbAno = new JLabel("Ano de fabricação");
-        adicionarComponente(lbAno,
-                GridBagConstraints.LINE_END,
-                GridBagConstraints.NONE,
-                3, 0, 1, 1);
-        
-        lbKm = new JLabel("Kilometragem rodada");
-        adicionarComponente(lbKm,
-                GridBagConstraints.LINE_END,
-                GridBagConstraints.NONE,
-                4, 0, 1, 1);
-        
-        lbCapacidade = new JLabel("Capacida máxima");
-        adicionarComponente(lbCapacidade,
-                GridBagConstraints.LINE_END,
-                GridBagConstraints.NONE,
-                5, 0, 1, 1);
         
         txtID = new JTextField(35);
         adicionarComponente(txtID,
                 GridBagConstraints.LINE_START,
                 GridBagConstraints.NONE,
                 0, 1, 1, 1);
-
-        txtMarca = new JTextField(35);
-        adicionarComponente(txtMarca,
+        
+        txtDescricao = new JTextField(35);
+        adicionarComponente(txtDescricao,
                 GridBagConstraints.LINE_START,
                 GridBagConstraints.NONE,
                 1, 1, 1, 1);
         
-        txtModelo = new JTextField(35);
-        adicionarComponente(txtModelo,
-                GridBagConstraints.LINE_START,
-                GridBagConstraints.NONE,
-                2, 1, 1, 1);
-        
-        txtAno = new JTextField(35);
-        adicionarComponente(txtAno,
-                GridBagConstraints.LINE_START,
-                GridBagConstraints.NONE,
-                3, 1, 1, 1);
-        
-        txtKm = new JTextField(35);
-        adicionarComponente(txtKm,
-                GridBagConstraints.LINE_START,
-                GridBagConstraints.NONE,
-                4, 1, 1, 1);
-        
-        txtCapacidade = new JTextField(35);
-        adicionarComponente(txtCapacidade,
-                GridBagConstraints.LINE_START,
-                GridBagConstraints.NONE,
-                5, 1, 1, 1);
-        
         btnSalvar = new JButton(I18N.obterBotaoSalvar(),
                 GerenciadorDeImagens.OK);
-
+        
         btnCancelar = new JButton(I18N.obterBotaoCancelar(),
                 GerenciadorDeImagens.CANCELAR);
         
@@ -181,17 +124,13 @@ public class TelaCadastroOnibus {
     }
     
     /**
-     * Retorna um novo usuário a partir do 
+     * Retorna um novo trajeto a partir do 
      * 
-     * @return Usuário criado.
+     * @return Trajeto criado.
      */
-    private Onibus carregarOnibus() {
-        return new Onibus(txtID.getText(),
-                txtMarca.getText(),
-                txtModelo.getText(),
-                Integer.parseInt(txtAno.getText()),
-                Integer.parseInt(txtKm.getText()),
-                Integer.parseInt(txtCapacidade.getText()));
+    private Trajeto carregarTrajeto() {
+        return new Trajeto(txtID.getText(),
+                txtDescricao.getText());
     }
     
     /**
@@ -199,11 +138,7 @@ public class TelaCadastroOnibus {
      */
     private void limparTela() {
         txtID.setText("");
-        txtMarca.setText("");
-        txtModelo.setText("");
-        txtAno.setText("");
-        txtKm.setText("");
-        txtCapacidade.setText("");
+        txtDescricao.setText("");
         txtID.requestFocus();
     }
     
@@ -230,7 +165,7 @@ public class TelaCadastroOnibus {
 //                        throw new Exception();
 //                    }
 
-                    gerenciadorOnibus.cadastrarOnibus(carregarOnibus());
+                    gerenciadorTrajetos.cadastrarTrajeto(carregarTrajeto());
                     Utilidades.msgInformacao(I18N.obterSucessoCadastroUsuario());
                     limparTela();
                 } catch (Exception ex) {
@@ -246,7 +181,7 @@ public class TelaCadastroOnibus {
      */
     private void construirTela() {
         janela = new JDialog();
-        janela.setTitle("Cadastro de Ônibus");
+        janela.setTitle("Cadastro de Trajetos");
         layout = new GridBagLayout();
         gbc = new GridBagConstraints();
         janela.setLayout(layout);

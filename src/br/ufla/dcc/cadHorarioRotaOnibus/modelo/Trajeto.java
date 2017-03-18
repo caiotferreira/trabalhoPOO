@@ -11,13 +11,21 @@ import java.util.ArrayList;
  *
  * @author Danniel
  */
-public class Trajeto extends Rota {
+public class Trajeto {
     
-    private ArrayList trajeto;
+    private final String idTrajeto;
+    private String trajeto;
     
-    public Trajeto(ArrayList trajeto, int id, String descricao, String origem, String destino) {
-        super(id, descricao, origem, destino);
+    public Trajeto(String idTrajeto, String trajeto) {
+        this.idTrajeto = idTrajeto;
         this.trajeto = trajeto;
     }
     
+    public String getIdTrajeto() {
+        return idTrajeto;
+    }
+
+    public String getDescricao() {
+        return trajeto;
+    }
 }

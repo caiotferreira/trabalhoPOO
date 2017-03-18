@@ -6,6 +6,7 @@
 package br.ufla.dcc.cadHorarioRotaOnibus.dao;
 
 import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Onibus;
+import java.util.List;
 
 /**
  *
@@ -20,4 +21,6 @@ public interface OnibusDAO {
     public void removerOnibus(Onibus onibus);
     
     public void alterarOnibus(Onibus onibus, float novaKm);
+    
+    public List<Onibus> obterTodosOnibus();
 }

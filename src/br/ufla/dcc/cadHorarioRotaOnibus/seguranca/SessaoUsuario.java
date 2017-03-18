@@ -61,12 +61,16 @@ public class SessaoUsuario {
      * @throws Exception Exceção gerada caso o usuário não possa ser autenticado,
      * ou seja, usuário não existe ou senha incorreta.
      */
-    public void alterarUsuario(Usuario usuario, char[] senha) throws Exception {        
+    public void alterarUsuario(Usuario usuario, char[] senha) throws Exception { 
+        System.out.println("5");
         if (usuario == null || !Arrays.equals(usuario.obterSenha(), senha)) {
+            System.out.println("cheguei");
             throw new Exception(I18N.obterErroAutenticacao());
         }
         else {
+            System.out.println("6");
             this.usuario = usuario;
+            System.out.println("7");
         }
     }
     

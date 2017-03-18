@@ -38,7 +38,7 @@ public class OnibusDAOLista implements OnibusDAO{
     }
     
     /**
-     * Retorna o usuário a partir de seu login
+     * Retorna o onibus a partir de seu login
      * 
      * @param id Id do ônibus a ser retornado.
      * @return Onibus correspondente ao id passado.
@@ -70,7 +70,10 @@ public class OnibusDAOLista implements OnibusDAO{
 
     @Override
     public void alterarOnibus(Onibus onibus, float novaKm) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listaOnibus.remove(onibus);
     }
     
+    public List<Onibus> obterTodosOnibus() {
+        return listaOnibus;
+    }
 }
