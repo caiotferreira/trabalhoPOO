@@ -13,10 +13,10 @@ import java.text.SimpleDateFormat;
  */
 public class Horarios {
     //horario de partida 
-    private SimpleDateFormat partida;
+    private String partida;
     //horario estimado da chegada
-    private SimpleDateFormat chegadaEstimada;
-
+    private String chegadaEstimada;
+    
     /**
      * Constroi um horario de uma rota a partir do seu horario de partida 
      * e horario estimado de chegada.
@@ -24,16 +24,17 @@ public class Horarios {
      * @param partida Horario de Partida
      * @param chegadaEstimada Horario estimado de chegada
      */
-    public Horarios(SimpleDateFormat partida, SimpleDateFormat chegadaEstimada) {
+    public Horarios(String partida, String chegadaEstimada) {
         this.partida = partida;
         this.chegadaEstimada = chegadaEstimada;
     }
+    
 
     /**
      * 
      * @return O horario de partida.
      */
-    public SimpleDateFormat getPartida() {
+    public String getPartida() {
         return partida;
     }
 
@@ -41,7 +42,7 @@ public class Horarios {
      * 
      * @param partida Altera o horario de partida.
      */
-    public void setPartida(SimpleDateFormat partida) {
+    public void setPartida(String partida) {
         this.partida = partida;
     }
 
@@ -49,7 +50,7 @@ public class Horarios {
      * 
      * @return O horário estimado de chegada.
      */
-    public SimpleDateFormat getChegadaEstimada() {
+    public String getChegadaEstimada() {
         return chegadaEstimada;
     }
 
@@ -57,7 +58,7 @@ public class Horarios {
      * 
      * @param chegadaEstimada Altera o horario estimado de chegada.
      */
-    public void setChegadaEstimada(SimpleDateFormat chegadaEstimada) {
+    public void setChegadaEstimada(String chegadaEstimada) {
         this.chegadaEstimada = chegadaEstimada;
     }
     

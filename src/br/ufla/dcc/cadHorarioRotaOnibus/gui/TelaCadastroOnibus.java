@@ -181,7 +181,7 @@ public class TelaCadastroOnibus {
     }
     
     /**
-     * Retorna um novo usuário a partir do 
+     * Retorna um novo onibus 
      * 
      * @return Usuário criado.
      */
@@ -231,8 +231,9 @@ public class TelaCadastroOnibus {
 //                    }
 
                     gerenciadorOnibus.cadastrarOnibus(carregarOnibus());
-                    Utilidades.msgInformacao(I18N.obterSucessoCadastroUsuario());
+                    Utilidades.msgInformacao("Onibus cadastrado com sucesso!");
                     limparTela();
+                    janela.dispose();
                 } catch (Exception ex) {
                     Utilidades.msgErro(ex.getMessage());
                 }

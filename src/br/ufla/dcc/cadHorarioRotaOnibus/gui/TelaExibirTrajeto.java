@@ -51,6 +51,7 @@ public class TelaExibirTrajeto extends javax.swing.JDialog {
         btnFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Exibir Trajetos");
 
         tbTrajetos.setModel(modelTrajetos);
         jScrollPane1.setViewportView(tbTrajetos);

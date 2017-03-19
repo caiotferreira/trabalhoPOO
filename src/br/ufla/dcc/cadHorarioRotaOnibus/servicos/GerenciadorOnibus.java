@@ -15,11 +15,11 @@ import java.util.List;
  * @author Acer
  */
 public class GerenciadorOnibus {
-    // atributo utilizado como camada de acesso a dados do cadastro de usuários
+    // atributo utilizado como camada de acesso a dados do cadastro de ônibus
     private final OnibusDAO repositorioOnibus;
     
      /**
-     * Constroi o gerenciador de usuários, inicializando as camadas de acesso a 
+     * Constroi o gerenciador de onibus, inicializando as camadas de acesso a 
      * dados e de sessão.
      */
     public GerenciadorOnibus() {
@@ -39,6 +39,15 @@ public class GerenciadorOnibus {
             //throw new Exception(I18N.obterErroUsuarioJaCadastrado());
         }
         repositorioOnibus.adicionarOnibus(onibus);
+    }
+    
+    public void removerOnibus(Onibus onibus) throws Exception {
+//        Onibus ret = repositorioOnibus.obterOnibusPeloID(onibus.getId());
+//        if (ret != null) {
+//            //throw new Exception(I18N.obterErroUsuarioJaCadastrado());
+//        }
+        
+        repositorioOnibus.removerOnibus(onibus);
     }
     
     public List<Onibus> buscarOnibus() {

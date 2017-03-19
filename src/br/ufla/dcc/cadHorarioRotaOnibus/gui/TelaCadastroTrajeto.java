@@ -168,6 +168,7 @@ public class TelaCadastroTrajeto {
                     gerenciadorTrajetos.cadastrarTrajeto(carregarTrajeto());
                     Utilidades.msgInformacao(I18N.obterSucessoCadastroUsuario());
                     limparTela();
+                    janela.dispose();
                 } catch (Exception ex) {
                     Utilidades.msgErro(ex.getMessage());
                 }

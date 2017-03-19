@@ -6,6 +6,7 @@
 package br.ufla.dcc.cadHorarioRotaOnibus.dao;
 
 import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Horarios;
+import java.util.List;
 
 /**
  *
@@ -19,6 +20,6 @@ public interface HorariosDAO {
     
     public void excluirHorario(Horarios horarios);
     
-    
+    public List<Horarios> obterTodosHorarios();
     
 }

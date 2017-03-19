@@ -35,10 +35,14 @@ public class TelaPrincipal {
     private final TelaCadastroUsuario telaCadastroUsuario;
     // tela de cadastro de trajeto
     private final TelaCadastroTrajeto telaCadastroTrajeto;
+    // tela de cadastro de horarios
+    private final TelaCadastroHorarios telaCadastroHorarios;
     // tela que exibe os onibus cadastrados
     private final TelaExibirOnibus telaExibirOnibus;
     // tela que exibe os trajetos cadastrados
-    private final TelaExibirTrajeto telaExibirTrajeto;    
+    private final TelaExibirTrajeto telaExibirTrajeto;
+    // tela que exibe os horarios cadastrados
+    private final TelaExibirHorarios telaExibirHorarios;  
     
     // janela da tela principal
     private JFrame janela;
@@ -62,9 +66,11 @@ public class TelaPrincipal {
     private JMenuItem menuLogout;
     private JMenuItem menuCadastrarOnibus;
     private JMenuItem menuCadastrarTrajeto;
+    private JMenuItem menuCadastrarHorarios;
     private JMenuItem menuCadastrarRota;
     private JMenuItem menuListarOnibus;
     private JMenuItem menuListarTrajetos;
+    private JMenuItem menuListarHorarios;
     
     /**
      * Construtor; incializa as demais telas e sessão de usuário.
@@ -74,8 +80,10 @@ public class TelaPrincipal {
         telaCadastroUsuario = new TelaCadastroUsuario(this);
         telaCadastroOnibus = new TelaCadastroOnibus(this);
         telaCadastroTrajeto = new TelaCadastroTrajeto(this);
+        telaCadastroHorarios = new TelaCadastroHorarios(this);
         telaExibirOnibus = new TelaExibirOnibus(janela, true);
         telaExibirTrajeto = new TelaExibirTrajeto(janela, true);
+        telaExibirHorarios = new TelaExibirHorarios(janela, true);
         sessaoUsuario = SessaoUsuario.obterInstancia();
     }
     
@@ -199,6 +207,24 @@ public class TelaPrincipal {
             }
         });
         
+        // metodo abre a tela de cadastro de horarios ao clicar no sub-menu
+        // Cadastrar Horarios
+        menuCadastrarHorarios.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telaCadastroHorarios.inicializar();
+                
+            }
+        });
+        
+        menuListarHorarios.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telaExibirHorarios.preencherTabela();
+                telaExibirHorarios.setVisible(true);
+            }
+        });
+        
         // metodo abre a tela de cadastro de rota ao clicar no sub-menu
         // Cadastrar Rota
 //        menuCadastrarRota.addActionListener(new ActionListener(){
@@ -243,15 +269,19 @@ public class TelaPrincipal {
         menuNavegar = new JMenu("Navegar");
         menuCadastrarOnibus = new JMenuItem("Cadastrar Onibus");
         menuCadastrarTrajeto = new JMenuItem("Cadastrar Trajeto");
+        menuCadastrarHorarios = new JMenuItem("Cadastrar Horarios");
         menuCadastrarRota = new JMenuItem("Cadastrar Rota");
         menuListarOnibus = new JMenuItem("Exibir ônibus");
         menuListarTrajetos = new JMenuItem("Exibir trajetos");
+        menuListarHorarios = new JMenuItem("Exibir horários");
         menuNavegar.add(menuCadastrarOnibus);
         menuNavegar.add(menuCadastrarTrajeto);
+        menuNavegar.add(menuCadastrarHorarios);
         menuNavegar.add(menuCadastrarRota);
         menuNavegar.addSeparator();
         menuNavegar.add(menuListarOnibus);
         menuNavegar.add(menuListarTrajetos);
+        menuNavegar.add(menuListarHorarios);
         menuPrincipal.add(menuNavegar);
     }
     

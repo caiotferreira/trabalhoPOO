@@ -5,36 +5,37 @@
  */
 package br.ufla.dcc.cadHorarioRotaOnibus.gui;
 
-import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Onibus;
-import br.ufla.dcc.cadHorarioRotaOnibus.servicos.GerenciadorOnibus;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Horarios;
+import br.ufla.dcc.cadHorarioRotaOnibus.servicos.GerenciadorHorarios;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Acer
  */
-public class TelaExibirOnibus extends javax.swing.JDialog {
+public class TelaExibirHorarios extends javax.swing.JDialog {
+
+    private HorariosTableModel modelHorarios;
+    private GerenciadorHorarios gerenciadorHorarios;
     
-    private OnibusTableModel modelOnibus;
-    private GerenciadorOnibus gerenciadorOnibus;
     /**
-     * Creates new form TeleExibirOnibus2
+     * Creates new form TelaExibirHorarios
      */
-    public TelaExibirOnibus(java.awt.Frame parent, boolean modal) {
+    public TelaExibirHorarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        modelOnibus = new OnibusTableModel();
-        gerenciadorOnibus = new GerenciadorOnibus();
+        modelHorarios = new HorariosTableModel();
+        gerenciadorHorarios = new GerenciadorHorarios();
         
         initComponents();
     }
     
     public void preencherTabela() {
-        modelOnibus.limpaArrayOnibus();
-        for(Onibus o : gerenciadorOnibus.buscarOnibus()) {
-            modelOnibus.adicionarOnibus(o);
+        modelHorarios.limpaArrayHorarios();
+        for(Horarios h : gerenciadorHorarios.buscarHorarios()) {
+            modelHorarios.adicionarHorarios(h);
         }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,24 +46,20 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbHorarios = new javax.swing.JTable();
         btnAlterar = new javax.swing.JButton();
-        spTabelaOnibus = new javax.swing.JScrollPane();
-        tbOnibus = new javax.swing.JTable();
         btnExcluir = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Exibir Onibus");
+        setTitle("Exibir Horários");
+        setLocation(new java.awt.Point(0, 0));
+
+        tbHorarios.setModel(modelHorarios);
+        jScrollPane1.setViewportView(tbHorarios);
 
         btnAlterar.setText("Alterar");
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
-            }
-        });
-
-        tbOnibus.setModel(modelOnibus);
-        spTabelaOnibus.setViewportView(tbOnibus);
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -85,22 +82,20 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(spTabelaOnibus, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(btnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(spTabelaOnibus, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAlterar)
                     .addComponent(btnExcluir)
@@ -109,31 +104,17 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAlterarActionPerformed
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        
+    }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        modelOnibus.removerOnibus(tbOnibus.getSelectedRow());
-
-        String linha = new String();
-        linha = Integer.toString(tbOnibus.getSelectedRow());
-        try {
-            System.out.println(linha);
-            gerenciadorOnibus.removerOnibus(modelOnibus.buscarOnibusPeloId(linha));
-            //System.out.println("removi no gerenciador");
-        } catch (Exception ex) {
-            Logger.getLogger(TelaExibirOnibus.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        modelHorarios.removerHorarios(tbHorarios.getSelectedRow());
         
+        //gerenciadorHorarios.removerHorarios(tbHorario);
     }//GEN-LAST:event_btnExcluirActionPerformed
-
-    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,21 +133,20 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaExibirOnibus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExibirHorarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaExibirOnibus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExibirHorarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaExibirOnibus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExibirHorarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaExibirOnibus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExibirHorarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaExibirOnibus dialog = new TelaExibirOnibus(new javax.swing.JFrame(), true);
+                TelaExibirHorarios dialog = new TelaExibirHorarios(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -182,7 +162,7 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFechar;
-    private javax.swing.JScrollPane spTabelaOnibus;
-    private javax.swing.JTable tbOnibus;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tbHorarios;
     // End of variables declaration//GEN-END:variables
 }

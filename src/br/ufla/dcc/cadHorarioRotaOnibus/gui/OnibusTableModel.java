@@ -32,6 +32,26 @@ public class OnibusTableModel extends AbstractTableModel {
         this.fireTableDataChanged();
     }
     
+    public void removerOnibus(int linha) {
+        this.onibus.remove(linha);
+        this.fireTableDataChanged();
+    }
+    
+    public List<Onibus> buscarTodosOnibus () {
+        return onibus;
+    }
+    
+    public Onibus buscarOnibusPeloId(String id) {
+        
+        for (Onibus o : onibus) {
+            if (id.equals(o.getId())) {
+                System.out.println("achei o busao");
+                return o;
+            }
+        }
+        return null;
+    }
+    
     @Override
     public int getRowCount() {
         return onibus.size();
