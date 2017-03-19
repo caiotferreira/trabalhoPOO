@@ -28,6 +28,7 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
     }
     
     public void preencherTabela() {
+        modelOnibus.limpaArrayOnibus();
         for(Onibus o : gerenciadorOnibus.buscarOnibus()) {
             modelOnibus.adicionarOnibus(o);
         }

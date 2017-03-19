@@ -28,6 +28,10 @@ public class TrajetosTableModel extends AbstractTableModel{
         this.fireTableDataChanged();
     }
    
+    public void limpaArrayTrajetos() {
+        trajeto.clear();
+    }
+    
     @Override
     public int getRowCount() {
         return trajeto.size();

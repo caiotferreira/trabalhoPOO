@@ -29,6 +29,7 @@ public class TelaExibirTrajeto extends javax.swing.JDialog {
     }
     
     public void preencherTabela() {
+        modelTrajetos.limpaArrayTrajetos();
         for (Trajeto t : gerenciadorTrajetos.buscarTrajeto()) {
             modelTrajetos.adicionarTrajeto(t);
         }

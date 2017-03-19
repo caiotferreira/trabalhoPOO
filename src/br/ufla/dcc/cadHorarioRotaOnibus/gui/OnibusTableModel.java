@@ -23,6 +23,10 @@ public class OnibusTableModel extends AbstractTableModel {
         onibus = new ArrayList<>();
     }
     
+    public void limpaArrayOnibus() {
+        onibus.clear();
+    }
+    
     public void adicionarOnibus(Onibus o) {
         this.onibus.add(o);
         this.fireTableDataChanged();
