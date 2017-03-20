@@ -9,7 +9,7 @@ import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Usuario;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public interface UsuarioDAO {
     /**

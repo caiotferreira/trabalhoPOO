@@ -5,19 +5,24 @@
  */
 package br.ufla.dcc.cadHorarioRotaOnibus.gui;
 
+import br.ufla.dcc.cadHorarioRotaOnibus.dao.lista.OnibusDAOLista;
 import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Onibus;
 import br.ufla.dcc.cadHorarioRotaOnibus.servicos.GerenciadorOnibus;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class TelaExibirOnibus extends javax.swing.JDialog {
     
     private OnibusTableModel modelOnibus;
     private GerenciadorOnibus gerenciadorOnibus;
+    private final TelaAlterarOnibus telaAlterarOnibus;
+    
     /**
      * Creates new form TeleExibirOnibus2
      */
@@ -25,6 +30,7 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
         super(parent, modal);
         modelOnibus = new OnibusTableModel();
         gerenciadorOnibus = new GerenciadorOnibus();
+        telaAlterarOnibus = new TelaAlterarOnibus(parent, true);
         
         initComponents();
     }
@@ -35,6 +41,8 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
             modelOnibus.adicionarOnibus(o);
         }
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,26 +121,27 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        telaAlterarOnibus.setOnibus(gerenciadorOnibus.buscarOnibusPeloIndex(modelOnibus.buscarId(tbOnibus.getSelectedRow())));
+        telaAlterarOnibus.preencherCampos();
+        telaAlterarOnibus.setVisible(true);
+        modelOnibus.atualizaTabela();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        modelOnibus.removerOnibus(tbOnibus.getSelectedRow());
-
-        String linha = new String();
-        linha = Integer.toString(tbOnibus.getSelectedRow());
-        try {
-            System.out.println(linha);
-            gerenciadorOnibus.removerOnibus(modelOnibus.buscarOnibusPeloId(linha));
-            //System.out.println("removi no gerenciador");
+        System.out.println("LINHA: "+tbOnibus.getSelectedRow());
+        
+        try {    
+            gerenciadorOnibus.removerOnibus(tbOnibus.getSelectedRow());
         } catch (Exception ex) {
             Logger.getLogger(TelaExibirOnibus.class.getName()).log(Level.SEVERE, null, ex);
         }
+        modelOnibus.removerOnibus(tbOnibus.getSelectedRow());
         
+        JOptionPane.showMessageDialog(rootPane, "Ônibus excluído");
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        // TODO add your handling code here:
+        dispose(); 
     }//GEN-LAST:event_btnFecharActionPerformed
 
     /**
@@ -167,6 +176,7 @@ public class TelaExibirOnibus extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 TelaExibirOnibus dialog = new TelaExibirOnibus(new javax.swing.JFrame(), true);
+                
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

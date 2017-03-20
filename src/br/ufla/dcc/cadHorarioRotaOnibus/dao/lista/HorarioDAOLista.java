@@ -14,7 +14,7 @@ import java.util.List;
  * Implementação do Data Access Object (Padrão de Projeto) de Horarios através de
  * lista em memória
  * 
- * @author Acer
+ * @author group
  */
 public class HorarioDAOLista implements HorariosDAO {
 
@@ -51,8 +51,8 @@ public class HorarioDAOLista implements HorariosDAO {
     }
 
     @Override
-    public void excluirHorario(Horarios horarios) {
-        listaHorarios.remove(horarios);
+    public void excluirHorario(int pos) {
+        listaHorarios.remove(pos);
     }
     
     public List<Horarios> obterTodosHorarios() {

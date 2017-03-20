@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class TrajetoDAOLista implements TrajetoDAO {
     
@@ -71,8 +71,8 @@ public class TrajetoDAOLista implements TrajetoDAO {
     }
 
     @Override
-    public void removerTrajeto(Trajeto trajeto) {
-        listaTrajeto.remove(trajeto);
+    public void removerTrajeto(int pos) {
+        listaTrajeto.remove(pos);
     }
 
     @Override

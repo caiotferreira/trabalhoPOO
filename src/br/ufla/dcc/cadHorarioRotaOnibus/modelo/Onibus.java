@@ -7,7 +7,7 @@ package br.ufla.dcc.cadHorarioRotaOnibus.modelo;
 
 /**
  *
- * @author Danniel
+ * @author group
  */
 public class Onibus {
     //Identificação do ônibus
@@ -96,5 +96,37 @@ public class Onibus {
      */
     public void setKm(float km) {
         this.km = km;
+    }
+    
+    /**
+     * 
+     * @param marca Altera a marca do ônibus 
+     */
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+    
+    /**
+     * 
+     * @param modelo Altera o modelo do ônibus 
+     */
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+    
+    /**
+     * 
+     * @param ano Altera o ano de fabricação do ônibus 
+     */
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+    
+    /**
+     * 
+     * @param capacidade Altera o ano de fabricação do ônibus 
+     */
+    public void setCapacidade(int capacidade) {
+        this.capacidade = capacidade;
     }
 }

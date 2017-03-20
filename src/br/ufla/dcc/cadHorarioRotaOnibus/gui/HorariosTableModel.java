@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class HorariosTableModel extends AbstractTableModel {
     

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Danniel
+ * @author group
  */
 public class Trajeto {
     
@@ -27,5 +27,9 @@ public class Trajeto {
 
     public String getDescricao() {
         return trajeto;
+    }
+    
+    public void setDescricao(String trajeto) {
+        this.trajeto = trajeto;
     }
 }

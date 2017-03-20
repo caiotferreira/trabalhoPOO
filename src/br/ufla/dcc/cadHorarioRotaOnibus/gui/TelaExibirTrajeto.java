@@ -7,15 +7,19 @@ package br.ufla.dcc.cadHorarioRotaOnibus.gui;
 
 import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Trajeto;
 import br.ufla.dcc.cadHorarioRotaOnibus.servicos.GerenciadorTrajetos;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class TelaExibirTrajeto extends javax.swing.JDialog {
     
     private TrajetosTableModel modelTrajetos;
     private GerenciadorTrajetos gerenciadorTrajetos;
+    private final TelaAlterarTrajeto telaAlterarTrajeto;
     
     /**
      * Creates new form TelaExibirTrajeto
@@ -24,6 +28,7 @@ public class TelaExibirTrajeto extends javax.swing.JDialog {
         super(parent, modal);
         modelTrajetos = new TrajetosTableModel();
         gerenciadorTrajetos = new GerenciadorTrajetos();
+        telaAlterarTrajeto = new TelaAlterarTrajeto(parent, true);
         
         initComponents();
     }
@@ -64,8 +69,18 @@ public class TelaExibirTrajeto extends javax.swing.JDialog {
         });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnFechar.setText("Fechar");
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,11 +111,32 @@ public class TelaExibirTrajeto extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        telaAlterarTrajeto.setTrajeto(gerenciadorTrajetos.buscarTrajetoPeloIndex(modelTrajetos.buscarId(tbTrajetos.getSelectedRow())));
+        telaAlterarTrajeto.preencherCampos();
+        telaAlterarTrajeto.setVisible(true);
+        modelTrajetos.atualizaTabela();
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        System.out.println("LINHA: "+tbTrajetos.getSelectedRow());
+        
+        try {    
+            gerenciadorTrajetos.removerTrajeto(tbTrajetos.getSelectedRow());
+        } catch (Exception ex) {
+            Logger.getLogger(TelaExibirOnibus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        modelTrajetos.removerTrajeto(tbTrajetos.getSelectedRow());
+        
+        JOptionPane.showMessageDialog(rootPane, "Trajeto excluído");
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnFecharActionPerformed
 
     /**
      * @param args the command line arguments

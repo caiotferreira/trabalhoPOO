@@ -7,11 +7,13 @@ package br.ufla.dcc.cadHorarioRotaOnibus.gui;
 
 import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Horarios;
 import br.ufla.dcc.cadHorarioRotaOnibus.servicos.GerenciadorHorarios;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class TelaExibirHorarios extends javax.swing.JDialog {
 
@@ -48,7 +50,6 @@ public class TelaExibirHorarios extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHorarios = new javax.swing.JTable();
-        btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
 
@@ -58,8 +59,6 @@ public class TelaExibirHorarios extends javax.swing.JDialog {
 
         tbHorarios.setModel(modelHorarios);
         jScrollPane1.setViewportView(tbHorarios);
-
-        btnAlterar.setText("Alterar");
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -80,16 +79,14 @@ public class TelaExibirHorarios extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,23 +94,35 @@ public class TelaExibirHorarios extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAlterar)
                     .addComponent(btnExcluir)
                     .addComponent(btnFechar))
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        
+        dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        modelHorarios.removerHorarios(tbHorarios.getSelectedRow());
+        System.out.println("LINHA: "+tbHorarios.getSelectedRow());
         
-        //gerenciadorHorarios.removerHorarios(tbHorario);
+        try {    
+            gerenciadorHorarios.removerHorarios(tbHorarios.getSelectedRow());
+        } catch (Exception ex) {
+            Logger.getLogger(TelaExibirOnibus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        modelHorarios.removerHorarios(tbHorarios.getSelectedRow());
+//        int linha = tbOnibus.getSelectedRow();
+//        
+//        Integer.toString(linha);
+//        
+//        
+        
+        JOptionPane.showMessageDialog(rootPane, "Horário excluído");
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
@@ -159,7 +168,6 @@ public class TelaExibirHorarios extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFechar;
     private javax.swing.JScrollPane jScrollPane1;

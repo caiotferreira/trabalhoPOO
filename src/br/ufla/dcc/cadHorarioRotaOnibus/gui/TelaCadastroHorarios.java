@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 /**
  * Classe que representa a interface que cadastra horários
  * 
- * @author Acer
+ * @author group
  */
 public class TelaCadastroHorarios {
     // referência para a tela principal

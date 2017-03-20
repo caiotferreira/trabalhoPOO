@@ -7,7 +7,7 @@ package br.ufla.dcc.cadHorarioRotaOnibus.modelo;
 
 /**
  *
- * @author Danniel
+ * @author group
  */
 public class Rota {
     private int id;

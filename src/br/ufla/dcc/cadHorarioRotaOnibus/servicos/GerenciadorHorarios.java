@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class GerenciadorHorarios {
     // atributo utilizado como camada de acesso a dados do cadastro de horários
@@ -41,12 +41,12 @@ public class GerenciadorHorarios {
         repositorioHorarios.adicionarHorarios(horarios);
     }
     
-    public void removerHorarios(Horarios horarios) throws Exception {
+    public void removerHorarios(int pos) throws Exception {
 //        Horarios ret = repositorioHorarios.obterOnibusPeloID(onibus.getId());
 //        if (ret != null) {
 //            //throw new Exception(I18N.obterErroUsuarioJaCadastrado());
 //        }
-        repositorioHorarios.excluirHorario(horarios);
+        repositorioHorarios.excluirHorario(pos);
     }
     
     public List<Horarios> buscarHorarios() {

@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public interface HorariosDAO {
     
@@ -18,7 +18,7 @@ public interface HorariosDAO {
     
     public void alterarHorarios(Horarios horarios);
     
-    public void excluirHorario(Horarios horarios);
+    public void excluirHorario(int pos);
     
     public List<Horarios> obterTodosHorarios();
     

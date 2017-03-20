@@ -13,7 +13,7 @@ import br.ufla.dcc.cadHorarioRotaOnibus.seguranca.SessaoUsuario;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class GerenciadorUsuarios {
     

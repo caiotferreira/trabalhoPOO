@@ -21,7 +21,7 @@ import javax.swing.JRootPane;
 /**
  * Classe que representa a Tela Principal
  * 
- * @author Danniel
+ * @author group
  */
 public class TelaPrincipal {
 
@@ -277,7 +277,7 @@ public class TelaPrincipal {
         menuNavegar.add(menuCadastrarOnibus);
         menuNavegar.add(menuCadastrarTrajeto);
         menuNavegar.add(menuCadastrarHorarios);
-        menuNavegar.add(menuCadastrarRota);
+        //menuNavegar.add(menuCadastrarRota);
         menuNavegar.addSeparator();
         menuNavegar.add(menuListarOnibus);
         menuNavegar.add(menuListarTrajetos);
@@ -335,7 +335,7 @@ public class TelaPrincipal {
      * Constrói a tela.
      */
     private void construirTela() {
-        janela = new JFrame(I18N.obterTituloTelaPrincipal());
+        janela = new JFrame("Controle de horários e trajetos de ônibus");
         janela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         construirMenuUsuario();
     }

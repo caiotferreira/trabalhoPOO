@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Danniel
+ * @author group
  */
 public interface OnibusDAO {
     
@@ -18,9 +18,9 @@ public interface OnibusDAO {
     
     public void adicionarOnibus(Onibus onibus);
     
-    public void removerOnibus(Onibus onibus);
+    public void removerOnibus(int pos);
     
-    public void alterarOnibus(Onibus onibus, float novaKm);
+    public void alterarOnibus(int pos, float km);
     
     public List<Onibus> obterTodosOnibus();
 }

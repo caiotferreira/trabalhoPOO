@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 
 /**
  *
- * @author Danniel Lucas, Caio Ferreira e Luiz Amaral
+ * @author group
  */
 public class Horarios {
     //horario de partida 
@@ -53,7 +53,7 @@ public class Horarios {
     public String getChegadaEstimada() {
         return chegadaEstimada;
     }
-
+    
     /**
      * 
      * @param chegadaEstimada Altera o horario estimado de chegada.
@@ -61,5 +61,4 @@ public class Horarios {
     public void setChegadaEstimada(String chegadaEstimada) {
         this.chegadaEstimada = chegadaEstimada;
     }
-    
 }

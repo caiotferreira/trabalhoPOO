@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class GerenciadorOnibus {
     // atributo utilizado como camada de acesso a dados do cadastro de ônibus
@@ -41,16 +41,24 @@ public class GerenciadorOnibus {
         repositorioOnibus.adicionarOnibus(onibus);
     }
     
-    public void removerOnibus(Onibus onibus) throws Exception {
+    public void removerOnibus(int pos) throws Exception {
 //        Onibus ret = repositorioOnibus.obterOnibusPeloID(onibus.getId());
 //        if (ret != null) {
 //            //throw new Exception(I18N.obterErroUsuarioJaCadastrado());
 //        }
         
-        repositorioOnibus.removerOnibus(onibus);
+        repositorioOnibus.removerOnibus(pos);
+    }
+    
+    public void alterarOnibus(int pos, float km) {
+        repositorioOnibus.alterarOnibus(pos, km);
     }
     
     public List<Onibus> buscarOnibus() {
         return repositorioOnibus.obterTodosOnibus();
+    }
+    
+    public Onibus buscarOnibusPeloIndex(String id) {
+        return repositorioOnibus.obterOnibusPeloID(id);
     }
 }

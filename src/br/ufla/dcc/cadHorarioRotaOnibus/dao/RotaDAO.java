@@ -12,12 +12,16 @@ import br.ufla.dcc.cadHorarioRotaOnibus.modelo.Trajeto;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public interface RotaDAO {
     
-    public void criaRota (Rota rota, Onibus onibus, Horarios horarios, Trajeto trajeto);
+     public Rota obterRotaPeloID(String id);
     
-    public void alteraRota (Rota rota);
+    public void adicionarRota(Rota rota, Onibus onibus, Horarios horarios, Trajeto trajeto);
+    
+    public void alterarRota (Rota rota);
+    
+    public void exlcuirRota(Rota rota);
     
 }

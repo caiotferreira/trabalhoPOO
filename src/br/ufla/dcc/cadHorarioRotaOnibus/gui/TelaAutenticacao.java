@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 /**
  *Classe que representa a Tela de Autenticação (login no sistema)
  * 
- * @author Acer
+ * @author group
  */
 public class TelaAutenticacao {
    // referência para a tela principal

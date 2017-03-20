@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class UsuarioDAOLista implements UsuarioDAO{
     // instância única da classe (Padrão de Projeto Singleton)

@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class Usuario {
     // login do usuário

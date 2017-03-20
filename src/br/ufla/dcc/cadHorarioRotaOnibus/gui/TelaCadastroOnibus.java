@@ -26,7 +26,7 @@ import javax.swing.JTextField;
 /**
  * Classe que representa a interface que cadastra ônibus
  * 
- * @author Acer
+ * @author group
  */
 public class TelaCadastroOnibus {
     // referência para a tela principal

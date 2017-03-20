@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 class TelaCadastroUsuario {
     

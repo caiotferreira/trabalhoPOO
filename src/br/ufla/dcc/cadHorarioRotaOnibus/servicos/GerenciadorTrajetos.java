@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class GerenciadorTrajetos {
     // atributo utilizado como camada de acesso a dados do cadastro de usuários
@@ -41,7 +41,15 @@ public class GerenciadorTrajetos {
         repositorioTrajeto.adicionarTrajeto(trajeto);
     }
     
+    public void removerTrajeto(int pos) {
+        repositorioTrajeto.removerTrajeto(pos);
+    }
+    
     public List<Trajeto> buscarTrajeto() {
         return repositorioTrajeto.obterTodosTrajetos();
+    }
+    
+    public Trajeto buscarTrajetoPeloIndex(String id) {
+        return repositorioTrajeto.obterTrajetoPeloID(id);
     }
 }

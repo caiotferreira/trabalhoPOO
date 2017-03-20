@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class TrajetosTableModel extends AbstractTableModel{
     
@@ -27,7 +27,16 @@ public class TrajetosTableModel extends AbstractTableModel{
         this.trajeto.add(t);
         this.fireTableDataChanged();
     }
+    
+    public void removerTrajeto(int linha) {
+        this.trajeto.remove(linha);
+        this.fireTableDataChanged();
+    }
    
+    public void atualizaTabela() {
+        this.fireTableDataChanged();
+    }
+    
     public void limpaArrayTrajetos() {
         trajeto.clear();
     }
@@ -53,5 +62,9 @@ public class TrajetosTableModel extends AbstractTableModel{
 
     public String getColumnName(int coluna) {
         return this.colunas[coluna];
+    }
+    
+    public String buscarId(int linha){
+        return this.trajeto.get(linha).getIdTrajeto();
     }
 }

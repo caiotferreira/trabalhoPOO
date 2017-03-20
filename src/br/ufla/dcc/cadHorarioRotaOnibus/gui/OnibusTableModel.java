@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class OnibusTableModel extends AbstractTableModel {
     
@@ -37,12 +37,15 @@ public class OnibusTableModel extends AbstractTableModel {
         this.fireTableDataChanged();
     }
     
+    public void atualizaTabela() {
+        this.fireTableDataChanged();
+    }
+    
     public List<Onibus> buscarTodosOnibus () {
         return onibus;
     }
     
     public Onibus buscarOnibusPeloId(String id) {
-        
         for (Onibus o : onibus) {
             if (id.equals(o.getId())) {
                 System.out.println("achei o busao");
@@ -77,5 +80,9 @@ public class OnibusTableModel extends AbstractTableModel {
     
     public String getColumnName(int coluna) {
         return this.colunas[coluna];
+    }
+    
+    public String buscarId(int linha){
+        return this.onibus.get(linha).getId();
     }
 }

@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Acer
+ * @author group
  */
 public class TelaCadastroTrajeto {
     // referência para a tela principal
@@ -166,7 +166,7 @@ public class TelaCadastroTrajeto {
 //                    }
 
                     gerenciadorTrajetos.cadastrarTrajeto(carregarTrajeto());
-                    Utilidades.msgInformacao(I18N.obterSucessoCadastroUsuario());
+                    Utilidades.msgInformacao("Trajeto cadastrado com sucesso!");
                     limparTela();
                     janela.dispose();
                 } catch (Exception ex) {

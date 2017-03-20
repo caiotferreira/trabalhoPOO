@@ -10,7 +10,7 @@ import java.util.List;
  * Implementação do Data Access Object (Padrão de Projeto) do Onibus através de
  * lista em memória
  * 
- * @author Caio Ferreira, Danniel Lucas e Luiz Amaral
+ * @author group
  */
 public class OnibusDAOLista implements OnibusDAO{
 
@@ -64,13 +64,13 @@ public class OnibusDAOLista implements OnibusDAO{
     }
 
     @Override
-    public void removerOnibus(Onibus onibus) {
-        listaOnibus.remove(onibus);
+    public void removerOnibus(int pos) {
+        listaOnibus.remove(pos);
     }
 
     @Override
-    public void alterarOnibus(Onibus onibus, float novaKm) {
-        
+    public void alterarOnibus(int pos, float km) {
+        listaOnibus.get(pos).setKm(km);
     }
     
     public List<Onibus> obterTodosOnibus() {

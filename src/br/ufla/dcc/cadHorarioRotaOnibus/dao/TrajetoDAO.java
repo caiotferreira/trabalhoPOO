@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 
  * 
- * @author Acer
+ * @author group
  */
 public interface TrajetoDAO {
     
@@ -21,7 +21,7 @@ public interface TrajetoDAO {
     
     public void alterarTrajeto(Trajeto trajeto);
     
-    public void removerTrajeto(Trajeto trajeto);
+    public void removerTrajeto(int pos);
     
     public List<Trajeto> obterTodosTrajetos();
 }
